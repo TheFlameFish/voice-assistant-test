@@ -13,9 +13,10 @@ print("--------------------------------")
 # Init TTS with the target model name
 tts = TTS(model_name="tts_models/en/ljspeech/tacotron2-DDC_ph", progress_bar=True).to(device)
 
-def play(text):
+def play(inputted):
+    print(f'Playing "{inputted}"')
     # Run TTS
-    output = tts.tts(text)
+    output = tts.tts(text=inputted)
 
     sd.play(output, 22050)  # 22050 is the sample rate used by the TTS model
     sd.wait()  # Wait for the sound to finish playing
